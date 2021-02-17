@@ -1,0 +1,22 @@
+extends layout.pug
+
+block append head
+  title='Short URLs'
+
+block content
+  h1 Short URLs
+  table
+    tr
+      th Original URL
+      th Short URL
+      th Date Created
+      th Visitors Count
+    each url in urls
+      tr
+        td 
+          a(href=`${url.url}`) #{url.url}
+        td
+          a(href=`/go/${url.shortCode}`) #{serverUrl + '/go/' + url.shortCode}
+        td #{url.dateCreated.asText()}
+        td #{url.visits}
+  br

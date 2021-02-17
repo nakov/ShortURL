@@ -1,0 +1,20 @@
+html
+  block head
+    head
+      link(rel='stylesheet', href='/styles.css', type='text/css')
+  body
+    header
+      a(href='/') Home
+      span  | 
+      a(href='/urls') Short URLs
+      span  | 
+      a(href='/add-url') Add URL
+
+    if errMsg
+      div(class='err') #{errMsg}
+
+    main
+      block content
+    
+    footer
+      div © 2021 - URL Shortener

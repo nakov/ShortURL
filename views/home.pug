@@ -1,0 +1,10 @@
+extends layout.pug
+
+block append head
+  title='URL Shortener'
+
+block content
+  h1 URL Shortener
+  ul
+    li Short URLs: <b>#{urls.length}</b>
+    li URL visitors: <b>#{visitors}</b>    

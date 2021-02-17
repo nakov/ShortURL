@@ -1,0 +1,15 @@
+extends layout.pug
+
+block append head
+  title='Add Short URL'
+
+block content
+  h1 Add Short URL
+  form(method='POST' action='/add-url')
+    div
+      label.url(for='url') URL: 
+      input.url(type='text', name='url', value=`${url}`)
+    div
+      label.code(for='code') Code: 
+      input.code(type='text', name='code', value=`${code}`)
+    button(type='submit') Create
