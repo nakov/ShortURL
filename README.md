@@ -7,11 +7,13 @@ The JS app "Short URL" holds a collection of URLs, accessible with a short code:
 
 ## App Details
 
-The app is based on Node.js + Express.js + Pug. It has no database and app data is not persistent!
+The app is based on Node.js + Express.js + Pug.
+ - It has **no database** and app data is not persistent!
 
-Web app live demo: https://shorturl.nakov.repl.co
-RESTful API live demo: https://shorturl.nakov.repl.co/api
-Play with the code at: https://repl.it/@nakov/shorturl
+Demo:
+ - Web app live demo: https://shorturl.nakov.repl.co
+ - RESTful API live demo: https://shorturl.nakov.repl.co/api
+ - Play with the code at: https://repl.it/@nakov/shorturl
 
 ## RESTful API
 The following endpoints are supported:
