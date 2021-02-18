@@ -1,14 +1,19 @@
 const express = require('express');
 const app = express();
-app.set('view engine', 'pug');
-app.use(require('body-parser').urlencoded({extended:true}));
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.json());
 app.use(express.static('public'))
+app.set('view engine', 'pug');
 
-const urlsController = require("./controllers/controller");
+const data = require("./data/app-data");
+data.seedSampleData();
 
-let urls = require("./data/urls");
+const mvcController = require("./controllers/mvc-controller");
+mvcController.setup(app, data);
 
-urlsController.setup(app, urls);
+const apiController = require("./controllers/api-controller");
+apiController.setup(app, data);
 
 app.listen(8080)
 .on('error', function(err) {

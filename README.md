@@ -7,4 +7,4 @@ JS App "Short URL": a collection of URLs, accessible with a short code:
 
 The app is based on Node.js + Express.js + Pug. It has no database and app data is not persistent!
 
-Live demo at: https://repl.it/@nakov/shorturl
+Live demo at: https://shorturl.nakov.repl.co

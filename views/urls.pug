@@ -10,13 +10,18 @@ block content
       th Original URL
       th Short URL
       th Date Created
-      th Visitors Count
+      th Visits
     each url in urls
       tr
         td 
-          a(href=`${url.url}`) #{url.url}
+          a(href=`${url.url}` target="_blank") #{url.url}
         td
-          a(href=`/go/${url.shortCode}`) #{serverUrl + '/go/' + url.shortCode}
-        td #{url.dateCreated.asText()}
+          a.shorturl(href=`${url.shortUrl}` target="_blank" onclick="javascript:openUrl(this)") #{url.shortUrl}
+        td #{url.dateCreatedAsText}
         td #{url.visits}
   br
+
+  script.
+    function openUrl(link) {
+      setTimeout(() => location.reload(), 500);
+    }
