@@ -1,5 +1,5 @@
 {
-  "name": "URL Shortener JS App",
+  "name": "URL-Shortener",
   "main": "index.js",
   "dependencies": {
     "body-parser": "^1.19.0",
