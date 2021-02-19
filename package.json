@@ -1,5 +1,5 @@
 {
-  "name": "MVC-app-integration-tests-example",
+  "name": "URL Shortener JS App",
   "main": "index.js",
   "dependencies": {
     "body-parser": "^1.19.0",
