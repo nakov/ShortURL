@@ -19,8 +19,7 @@ block content
           a.shorturl(href=`${url.shortUrl}` target="_blank" onclick="javascript:openUrl(this)") #{url.shortUrl}
         td #{url.dateCreatedAsText}
         td #{url.visits}
-  br
-
+  
   script.
     function openUrl(link) {
       setTimeout(() => location.reload(), 500);

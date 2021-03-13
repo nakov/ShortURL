@@ -8,8 +8,8 @@ block content
   form(method='POST' action='/add-url')
     div
       label.url(for='url') URL: 
-      input.url(type='text', name='url', value=`${url}`)
+      input#url.url(type='text', name='url', value=`${url}`)
     div
       label.code(for='code') Code: 
-      input.code(type='text', name='code', value=`${code}`)
+      input#code.url(type='text', name='code', value=`${code}`)
     button(type='submit') Create

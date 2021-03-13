@@ -8,6 +8,10 @@ header, footer {
   border-radius: 3px; 
 }
 
+footer {
+  margin-top: 15px;
+}
+
 main {
   margin-left: 10px;
 }
@@ -46,11 +50,11 @@ main form label.code {
   margin-left: 15px;
 }
 
-main form input.code {
+main form input#code {
   width: 80px;
 }
 
-main form input.url {
+main form input#url {
   width: 250px;
 }
 
