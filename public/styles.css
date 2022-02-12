@@ -16,14 +16,27 @@ main {
   margin-left: 10px;
 }
 
+
 table {
-  border-collapse: collapse;
   width: 100%;
+  border-collapse: collapse;
+  background-color: #f5fff5;
 }
 
-table td, table th {
+table th, table td {
   border: 1px solid #ddd;
+}
+
+table th {
+  padding: 12px 8px;
+  text-align: left;
+  background-color: rgb(107, 182, 109);
+  color: white;    
+}
+
+table td {
   padding: 8px;
+  overflow-wrap: anywhere;
 }
 
 table tr:nth-child(even) {
@@ -34,37 +47,29 @@ table tr:hover {
   background-color: rgb(198, 207, 180);
 }
 
-table th {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: left;
-  background-color: rgb(107, 182, 109);
-  color: white;
+
+form table {
+  width: 100%;
+  max-width: 800px;
 }
 
-main form > div {
-  display: inline-block;
+form table td:nth-child(1) {
+  width: 10%;
+  white-space: nowrap;
 }
 
-main form label.code {
-  margin-left: 15px;
-}
-
-main form input#code {
-  width: 80px;
-}
-
-main form input#url {
-  width: 250px;
+main form input {
+  width: 100%;
+  box-sizing: border-box;
 }
 
 main form button {
-  margin-left: 15px;
-  padding: 5px 20px;
-  border-radius: 10px;
   outline: none;
   background: #9fd39c;
+  border-radius: 10px;
+  padding: 5px10px;
 }
+
 
 .err {
   background: red;

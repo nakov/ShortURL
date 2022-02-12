@@ -5,20 +5,22 @@ block append head
 
 block content
   h1 Short URLs
-  table
-    tr
-      th Original URL
-      th Short URL
-      th Date Created
-      th Visits
-    each url in urls
+  table.urls
+    thead
       tr
-        td 
-          a(href=`${url.url}` target="_blank") #{url.url}
-        td
-          a.shorturl(href=`${url.shortUrl}` target="_blank" onclick="javascript:openUrl(this)") #{url.shortUrl}
-        td #{url.dateCreatedAsText}
-        td #{url.visits}
+        th Original URL
+        th Short URL
+        th Date Created
+        th Visits
+    tbody
+      each url in urls
+        tr
+          td 
+            a(href=`${url.url}` target="_blank") #{url.url}
+          td
+            a.shorturl(href=`${url.shortUrl}` target="_blank" onclick="javascript:openUrl(this)") #{url.shortUrl}
+          td #{url.dateCreatedAsText}
+          td #{url.visits}
   
   script.
     function openUrl(link) {

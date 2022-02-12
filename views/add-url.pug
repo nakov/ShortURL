@@ -6,10 +6,17 @@ block append head
 block content
   h1 Add Short URL
   form(method='POST' action='/add-url')
-    div
-      label.url(for='url') URL: 
-      input#url.url(type='text', name='url', value=`${url}`)
-    div
-      label.code(for='code') Code: 
-      input#code.url(type='text', name='code', value=`${code}`)
-    button(type='submit') Create
+    table
+      tr
+        td
+          label.url(for='url') URL: 
+        td
+          input#url.url(type='text', name='url', value=`${url}`)
+      tr
+        td
+          label.code(for='code') Short Code: 
+        td
+          input#code.url(type='text', name='code', value=`${code}`)
+      tr
+        td(colspan="2")
+          button(type='submit') Create
