@@ -36,7 +36,7 @@ table th {
 
 table td {
   padding: 8px;
-  overflow-wrap: anywhere;
+  word-break: break-all;
 }
 
 table tr:nth-child(even) {
@@ -53,7 +53,7 @@ form table {
   max-width: 600px;
 }
 
-form table td:nth-child(1) {
+form table td:first-child {
   width: 10%;
   white-space: nowrap;
 }
