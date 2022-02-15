@@ -50,7 +50,7 @@ table tr:hover {
 
 form table {
   width: 100%;
-  max-width: 800px;
+  max-width: 600px;
 }
 
 form table td:nth-child(1) {
