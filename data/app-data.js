@@ -1,5 +1,4 @@
 let urls = [];
-let code2url = new Map();
 
 function seedSampleData() {
   urls.length = 0;
@@ -18,8 +17,11 @@ function seedSampleData() {
     dateCreated: new Date("2021-02-19T16:41:56"),
     visits: 86
   });
-  code2url.clear();
-  urls.forEach(url => code2url.set(url.shortCode, url));
+}
+
+function urlExistsByShortCode(shortCode) {
+  let urls = urls.filter(u => u.shortCode == shortCode);
+  return urls.length > 0;
 }
 
 function findUrlByShortCode(shortCode) {
@@ -39,7 +41,7 @@ function addUrl(url, shortCode) {
     return {errMsg: "Invalid URL!"};
   if (! isValidShortCode(shortCode))
     return {errMsg: "Short code holds invalid chars!"};
-  if (code2url.has(shortCode))
+  if (urlExistsByShortCode(shortCode))
     return {errMsg: "Short code already exists!"};
   let newUrl = {
     url: url,
@@ -48,15 +50,13 @@ function addUrl(url, shortCode) {
     visits: 0,
   };
   urls.push(newUrl);
-  code2url.set(shortCode, newUrl);
   return {msg: "Short code added.", url: newUrl};
 }
 
 function deleteUrlByShortCode(shortCode) {
-  if (code2url.has(shortCode)) {
+  if (urlExistsByShortCode(shortCode)) {
     let urlIndex = urls.findIndex(u => u.shortCode == shortCode);
     urls.splice(urlIndex, 1);
-    code2url.delete(shortCode);
     return {msg: `URL deleted: ${shortCode}`};
   }
   else
@@ -64,13 +64,12 @@ function deleteUrlByShortCode(shortCode) {
 }
 
 function visitUrl(shortCode) {
-  let targetUrl = code2url.get(shortCode);
-  if (targetUrl) {
+  let targetUrl = findUrlByShortCode(shortCode);
+  if (targetUrl.url) {
     targetUrl.visits++;
     return targetUrl;
   } else return {
-    errMsg: "Invalid short code!",
-    errText: "Cannot navigate to given short URL",
+    errMsg: "Cannot navigate to given short URL",
     errDetails: `Invalid short URL code: ${shortCode}`
   };
 }
@@ -116,25 +115,12 @@ function generateShortCode() {
   return code;
 }
 
-function getUrlForDisplay(httpRequest, url) {
-  let serverUrl =
-    httpRequest.protocol + '://' + httpRequest.get('host');
-  return {
-    url: url.url,
-    shortCode: url.shortCode,
-    shortUrl: serverUrl + "/go/" + url.shortCode,
-    dateCreated: url.dateCreated,
-    visits: url.visits      
-  };
-}
-
 module.exports = {
   urls,
   seedSampleData,
-  getUrlForDisplay,
   findUrlByShortCode,
-  addUrl,
-  deleteUrlByShortCode,
   visitUrl,
-  generateShortCode
+  generateShortCode,
+  addUrl,
+  deleteUrlByShortCode
 };

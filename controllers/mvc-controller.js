@@ -8,9 +8,7 @@ function setup(app, data) {
 
   app.get('/urls', function(req, res) {
     let urlsForDisplay = data.urls.map(
-      u => data.getUrlForDisplay(req, u));
-    urlsForDisplay.forEach(u =>
-      u.dateCreatedAsText = date2text(u.dateCreated));
+      url => getUrlForDisplay(req, url)); 
     let model = { urls: urlsForDisplay };
     res.render('urls', model);
   });
@@ -42,6 +40,18 @@ function setup(app, data) {
       res.redirect('/urls');
     }
   });
+  
+  function getUrlForDisplay(httpReq, url) {
+    let serverUrl =
+      httpReq.protocol + '://' + httpReq.hostname;
+    return {
+      url: url.url,
+      shortCode: url.shortCode,
+      shortUrl: serverUrl + "/go/" + url.shortCode,
+      dateCreated: date2text(url.dateCreated),
+      visits: url.visits      
+    };
+  }
 
   function date2text(inputDate) {
     let date = inputDate.toISOString().split('.')[0];
