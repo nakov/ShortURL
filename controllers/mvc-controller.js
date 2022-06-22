@@ -1,4 +1,6 @@
 function setup(app, data) {
+  const utils = require("./controller-utils");
+
   app.get('/', function(req, res) {
     let visitors = data.urls.reduce(
       (sum, url) => sum + url.visits, 0);
@@ -8,7 +10,7 @@ function setup(app, data) {
 
   app.get('/urls', function(req, res) {
     let urlsForDisplay = data.urls.map(
-      url => getUrlForDisplay(req, url)); 
+      url => utils.getUrlForDisplay(req, url)); 
     let model = { urls: urlsForDisplay };
     res.render('urls', model);
   });
@@ -40,24 +42,6 @@ function setup(app, data) {
       res.redirect('/urls');
     }
   });
-  
-  function getUrlForDisplay(httpReq, url) {
-    let serverUrl =
-      httpReq.protocol + '://' + httpReq.hostname;
-    return {
-      url: url.url,
-      shortCode: url.shortCode,
-      shortUrl: serverUrl + "/go/" + url.shortCode,
-      dateCreated: date2text(url.dateCreated),
-      visits: url.visits      
-    };
-  }
-
-  function date2text(inputDate) {
-    let date = inputDate.toISOString().split('.')[0];
-    date = date.replace('T', ' ');
-    return date;
-  }
 }
 
 module.exports = { setup };

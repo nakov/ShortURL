@@ -65,11 +65,17 @@ main form input {
 
 main form button {
   outline: none;
-  background: #9fd39c;
-  border-radius: 10px;
-  padding: 5px10px;
+  padding: 4px 10px;
+  font-size: 1em;
+  color: #111;
+  background: #b5e0b2;
+  border: 2px solid #62b762;
+  border-radius: 4px;
 }
 
+main form button:hover {
+  background: #c2e8bf;
+}
 
 .err {
   background: red;

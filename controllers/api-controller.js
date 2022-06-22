@@ -1,4 +1,6 @@
 function setup(app, data) {
+  const utils = require("./controller-utils");
+  
   app.get('/api', function(req, res) {
     let routes = app._router.stack
       .filter(r => r.route && r.route.path.startsWith('/api'))
@@ -11,7 +13,7 @@ function setup(app, data) {
 
   app.get('/api/urls', function(req, res) {
     let result = data.urls.map(
-      u => data.getUrlForDisplay(req, u));
+      u => utils.getUrlForDisplay(req, u));
     res.send(result);
   });
 
@@ -20,7 +22,7 @@ function setup(app, data) {
     if (result.errMsg)
       res.status(404).send(result);
     else
-      res.send(data.getUrlForDisplay(req, result));
+      res.send(utils.getUrlForDisplay(req, result));
   });
 
   app.post('/api/urls', function(req, res) {
@@ -28,7 +30,7 @@ function setup(app, data) {
     if (result.errMsg)
       res.status(400).send(result);
     else {
-      result.url = data.getUrlForDisplay(req, result.url);
+      result.url = utils.getUrlForDisplay(req, result.url);
       res.send(result);
     }
   });
@@ -46,7 +48,7 @@ function setup(app, data) {
     if (result.errMsg)
       res.status(404).send(result);
     else
-      res.send(data.getUrlForDisplay(req, result));
+      res.send(utils.getUrlForDisplay(req, result));
   });
 }
 

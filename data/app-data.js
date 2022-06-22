@@ -20,8 +20,8 @@ function seedSampleData() {
 }
 
 function urlExistsByShortCode(shortCode) {
-  let urls = urls.filter(u => u.shortCode == shortCode);
-  return urls.length > 0;
+  let urlExists = urls.some(u => u.shortCode == shortCode);
+  return urlExists;
 }
 
 function findUrlByShortCode(shortCode) {
