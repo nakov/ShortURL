@@ -16,6 +16,7 @@ Demo:
  - Play with the code at: https://repl.it/@nakov/shorturl
 
 ## RESTful API
+
 The following endpoints are supported:
  - `GET /api` - list all API endpoints
  - `GET /api/urls` - list all shout URLs
@@ -23,6 +24,10 @@ The following endpoints are supported:
  - `POST /api/urls` - create a new URL shortcode (post a JSON objects in the request body, e.g. `{"url":"https://cnn.com", "shortCode":"cnn"}`
  - `DELETE /api/urls/:shortCode` - deletes short URL by given `shortCode`
  - `POST /api/urls/visit/:shortCode` - visits short URL by given `shortCode` (increases the visits count)
+
+## Windows Desktop Client App
+
+https://github.com/nakov/ShortURL-DesktopClient
 
 ## Screenshots
 
